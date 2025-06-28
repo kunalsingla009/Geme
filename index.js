@@ -1,41 +1,53 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
-const Result = require('./models/Result');
+const path = require('path');
+require('dotenv').config(); // Optional: only if you're using .env
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 10000;
 
+// MongoDB connection (make sure MONGO_URI is set in Render Environment)
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+  useUnifiedTopology: true,
+})
+.then(() => console.log('✅ MongoDB connected'))
+.catch((err) => console.error('❌ MongoDB connection error:', err));
 
-app.post('/api/results', async (req, res) => {
-  try {
-    const { game, result, day, month, year } = req.body;
-    const newResult = new Result({ game, result, day, month, year });
-    await newResult.save();
-    res.status(201).json({ message: 'Result saved successfully' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public'))); // ✅ Serve static files from public/
+
+// MongoDB Schema
+const Result = require('./models/Result'); // ✅ Adjusted path to model
+
+// ✅ Route: Home — serves semi.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'semi.html'));
 });
 
+// ✅ Route: Admin page
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
+
+// ✅ Route: Results page
+app.get('/results', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'result.html'));
+});
+
+// ✅ API to fetch results (Optional based on your logic)
 app.get('/api/results', async (req, res) => {
   try {
-    const game = req.query.game;
-    const results = await Result.find({ game }).sort({ year: -1, month: -1, day: -1 });
+    const results = await Result.find();
     res.json(results);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: 'Failed to fetch results' });
   }
 });
 
-app.use(express.static('public'));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
