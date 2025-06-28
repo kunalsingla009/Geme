@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>24 Hour Satta Bazzar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://i.imgur.com/vY9ZLx0.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #000;
+    }
+
+    .top-bar .links a {
+      color: white;
+      margin-left: 15px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .marquee {
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #ffd700;
+      animation: marquee 10s linear infinite;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: bold;
+      margin: 10px auto;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .live-name {
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      margin-top: 10px;
+      display: inline-block;
+      border-radius: 5px;
+      font-weight: bold;
+      animation: blink 0.6s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+
+    .time-box {
+      background-color: black;
+      color: white;
+      padding: 8px 15px;
+      margin-top: 8px;
+      display: inline-block;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .trusted-line, .daily-line {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      margin: 10px 0;
+      background-color: black;
+      padding: 10px;
+    }
+
+    .thankyou-line {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffcc00;
+      margin: 10px 0;
+    }
+
+    .game-box {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px auto;
+      padding: 10px;
+      width: 90%;
+    }
+
+    .game {
+      width: 200px;
+      padding: 15px;
+      background-color: #000000d0;
+      border: 2px solid #ffd700;
+      border-radius: 10px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: transform 0.3s;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+    }
+
+    .game:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    .game button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: gold;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .game button:hover {
+      background-color: #ffcc00;
+      transform: scale(1.1);
+    }
+
+    .footer {
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-top: 1px solid #666;
+      padding-top: 20px;
+      line-height: 1.8;
+    }
+
+    .footer .links {
+      font-weight: bold;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .game {
+        width: 90%;
+      }
+
+      .marquee,
+      .trusted-line,
+      .daily-line {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="top-bar">
+      <div class="links">
+        <a href="#">Contact</a>
+        <a href="#">Login</a>
+      </div>
+    </div>
+
+    <div class="marquee">WELCOME TO 24 HOUR SATTA MARKET</div>
+
+    <div id="liveBox" class="live-name">LIVE</div>
+    <div id="liveTimeBox" style="margin-top: 5px; font-size: 1.2rem; color: #ffd700; font-weight: bold;"></div>
+
+    <div class="trusted-line">भारत की ट्रस्टेड वेबसाइट</div>
+    <div class="trusted-line">इस वेबसाइट पर डेली सही रिजल्ट मिलता है</div>
+
+    <img src="https://media.giphy.com/media/xUn3CftPBajoflzROU/giphy.gif" style="width: 90%; max-width: 400px; height: auto; margin-top: 10px;">
+
+    <div class="game" style="font-size: 2.5rem; color: #00ffff; margin: 20px auto; width: fit-content;">
+      TODAY GAME RESULT
+      <div style="font-size: 2.8rem; color: lime; margin-top: 10px;">FARIDABAD</div>
+      <div style="font-size: 3rem; color: white; font-weight: bold; margin-top: 5px;">01</div>
+    </div>
+    <img src="https://wallpaperaccess.com/full/2274156.jpg" alt="Gold Coin" width="450" style="margin-top: 10px; border: 2px solid black; border-radius: 10px;">
+
+    <div class="game-box">
+      <div class="game">DISAWAR<br>Time: 5:00 AM<br><button onclick="showResult('DISAWAR')">SHOW RESULTS</button></div>
+      <div class="game">SHARDA<br>Time: 10:00 AM<br><button onclick="showResult('SHARDA')">SHOW RESULTS</button></div>
+      <div class="game">MATKE<br>Time: 11:00 AM<br><button onclick="showResult('MATKE')">SHOW RESULTS</button></div>
+      <div class="game">HOLIDAY<br>Time: 12:00 NOON<br><button onclick="showResult('HOLIDAY')">SHOW RESULTS</button></div>
+      <div class="game">NAINTAL<br>Time: 01:00 PM<br><button onclick="showResult('NAINTAL')">SHOW RESULTS</button></div>
+      <div class="game">GANGA<br>Time: 02:00 PM<br><button onclick="showResult('GANGA')">SHOW RESULTS</button></div>
+      <div class="game">HILL<br>Time: 03:00 PM<br><button onclick="showResult('HILL')">SHOW RESULTS</button></div>
+      <div class="game">RAMA<br>Time: 04:00 PM<br><button onclick="showResult('RAMA')">SHOW RESULTS</button></div>
+      <div class="game">GOOD KING<br>Time: 05:00 PM<br><button onclick="showResult('GOOD KING')">SHOW RESULTS</button></div>
+      <div class="game">FARIDABAD<br>Time: 06:00 PM<br><button onclick="showResult('FARIDABAD')">SHOW RESULTS</button></div>
+      <div class="game">GAZIYABAD<br>Time: 08:00 PM<br><button onclick="showResult('GAZIYABAD')">SHOW RESULTS</button></div>
+      <div class="game">GALI<br>Time: 11:00 PM<br><button onclick="showResult('GALI')">SHOW RESULTS</button></div>
+    </div>
+
+    <div class="thankyou-line">THANK YOU FOR VISITING</div>
+
+    <div class="footer">
+      <div class="links">Sitemap | Privacy Policy | Disclaimer | FAQ | Terms & Conditions</div>
+      <div>©️ 2010 24 HOUR SATTA MARKET LIMITED<br>All rights reserved.</div>
+    </div>
+  </div>
+
+  <script>
+    function showResult(game) {
+      window.location.href = `result.html?game=${encodeURIComponent(game)}`;
+    }
+
+    function updateTimeBox() {
+      const timeBox = document.getElementById('timeBox');
+      const liveTimeBox = document.getElementById('liveTimeBox');
+      setInterval(() => {
+        const now = new Date();
+        const days = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+        const months = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+        const day = days[now.getDay()];
+        const date = now.getDate();
+        const month = months[now.getMonth()];
+        const year = now.getFullYear();
+        const hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHour = hours % 12 === 0 ? 12 : hours % 12;
+        const time = `${formattedHour}:${minutes}${ampm}`;
+        const fullTime = `${time} , ${day}, ${date} ${month} ${year}`;
+        if (timeBox) timeBox.textContent = fullTime;
+        if (liveTimeBox) liveTimeBox.textContent = fullTime;
+      }, 1000);
+    }
+
+    window.onload = function() {
+      updateTimeBox();
+    };
+  </script>
+</body>
+</html>
