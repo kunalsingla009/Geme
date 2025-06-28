@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result Admin</title>
+  <style>
+    body { font-family: Arial; padding: 30px; background: #f0f0f0; }
+    input, select, button { padding: 10px; margin: 10px 0; width: 100%; max-width: 300px; }
+    label { display: block; margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Post New Result</h2>
+
+  <label for="game">Game:</label>
+  <select id="game">
+    <option>faridabad</option>
+    <option>gali</option>
+    <option>disawar</option>
+    <option>sharda</option>
+    <option>matke</option>
+    <option>naintal</option>
+    <option>ganga</option>
+    <option>hill</option>
+    <option>rama</option>
+    <option>good king</option>
+    <option>ghaziabad</option>
+    <option>holiday</option>
+  </select>
+
+  <label>Result:</label>
+  <input type="text" id="result" />
+
+  <label>Day:</label>
+  <input type="number" id="day" min="1" max="31" />
+
+  <label>Month:</label>
+  <input type="number" id="month" min="1" max="12" />
+
+  <label>Year:</label>
+  <input type="number" id="year" min="2020" max="2100" value="2025" />
+
+  <button onclick="submitResult()">Submit</button>
+
+  <div id="status"></div>
+
+  <script>
+    async function submitResult() {
+      const payload = {
+        game: document.getElementById('game').value.toLowerCase(),
+        result: document.getElementById('result').value,
+        day: parseInt(document.getElementById('day').value),
+        month: parseInt(document.getElementById('month').value),
+        year: parseInt(document.getElementById('year').value)
+      };
+
+      const res = await fetch('/api/results', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const status = document.getElementById('status');
+      if (res.ok) {
+        status.innerText = '✅ Result submitted successfully.';
+      } else {
+        status.innerText = '❌ Error submitting result.';
+      }
+    }
+  </script>
+</body>
+</html>
