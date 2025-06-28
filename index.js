@@ -1,43 +1,43 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-require('dotenv').config(); // Optional: only if you're using .env
+require('dotenv').config(); // Load .env file if used locally
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// MongoDB connection (make sure MONGO_URI is set in Render Environment)
-mongoose.connect(process.env.MONGO_URI, {
+// ✅ Connect to MongoDB using MONGODB_URI (set in Render environment)
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => console.log('✅ MongoDB connected'))
 .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// Middleware
+// ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public'))); // ✅ Serve static files from public/
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files like HTML, CSS, JS
 
-// MongoDB Schema
-const Result = require('./models/Result'); // ✅ Adjusted path to model
+// ✅ MongoDB Schema
+const Result = require('./models/Result'); // Schema for results
 
-// ✅ Route: Home — serves semi.html
+// ✅ Home Route (semi.html)
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'semi.html'));
 });
 
-// ✅ Route: Admin page
+// ✅ Admin Dashboard (admin.html)
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-// ✅ Route: Results page
+// ✅ Result Page (result.html)
 app.get('/results', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'result.html'));
 });
 
-// ✅ API to fetch results (Optional based on your logic)
+// ✅ Optional API Endpoint to fetch results (for AJAX if needed)
 app.get('/api/results', async (req, res) => {
   try {
     const results = await Result.find();
@@ -47,7 +47,7 @@ app.get('/api/results', async (req, res) => {
   }
 });
 
-// Start server
+// ✅ Start the Express server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
